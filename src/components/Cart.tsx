@@ -1,6 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../Store";
-import { removeFromCart, clearCart } from "../features/cart/cartSlice";
+import {
+  removeFromCart,
+  clearCart,
+  increaseQuantity,
+  decreaseQuantity,
+} from "../features/cart/cartSlice";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -39,7 +44,7 @@ const Cart = () => {
       </h2>
 
       {cartItems.length === 0 ? (
-        <p>Your cart is empty </p>
+        <p>Your cart is empty 🛒</p>
       ) : (
         <>
           {cartItems.map((item) => (
@@ -61,7 +66,37 @@ const Cart = () => {
                 </p>
               </div>
 
-              <div>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <button
+                  onClick={() => dispatch(decreaseQuantity(item.id))}
+                  style={{
+                    padding: "4px 8px",
+                    borderRadius: "6px",
+                    border: "1px solid #aaa",
+                    backgroundColor: "#f9fafb",
+                    cursor: "pointer",
+                    fontWeight: 600,
+                  }}
+                >
+                  −
+                </button>
+
+                <span style={{ fontWeight: "bold" }}>{item.quantity}</span>
+
+                <button
+                  onClick={() => dispatch(increaseQuantity(item.id))}
+                  style={{
+                    padding: "4px 8px",
+                    borderRadius: "6px",
+                    border: "1px solid #aaa",
+                    backgroundColor: "#f9fafb",
+                    cursor: "pointer",
+                    fontWeight: 600,
+                  }}
+                >
+                  +
+                </button>
+
                 <button
                   onClick={() => handleDelete(item.id, item.name)}
                   style={{
@@ -73,14 +108,6 @@ const Cart = () => {
                     cursor: "pointer",
                     fontWeight: 500,
                   }}
-                  onMouseOver={(e) =>
-                    ((e.target as HTMLButtonElement).style.backgroundColor =
-                      "#b91c1c")
-                  }
-                  onMouseOut={(e) =>
-                    ((e.target as HTMLButtonElement).style.backgroundColor =
-                      "#dc2626")
-                  }
                 >
                   Delete
                 </button>
@@ -88,7 +115,13 @@ const Cart = () => {
             </div>
           ))}
 
-          <div style={{ marginTop: "24px", borderTop: "1px solid #ddd", paddingTop: "12px" }}>
+          <div
+            style={{
+              marginTop: "24px",
+              borderTop: "1px solid #ddd",
+              paddingTop: "12px",
+            }}
+          >
             <h3 style={{ fontWeight: "bold", fontSize: "18px" }}>
               Total: ${total.toFixed(2)}
             </h3>
@@ -104,14 +137,6 @@ const Cart = () => {
                 cursor: "pointer",
                 fontWeight: 500,
               }}
-              onMouseOver={(e) =>
-                ((e.target as HTMLButtonElement).style.backgroundColor =
-                  "#374151")
-              }
-              onMouseOut={(e) =>
-                ((e.target as HTMLButtonElement).style.backgroundColor =
-                  "#111827")
-              }
             >
               Clear Cart
             </button>
