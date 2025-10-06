@@ -1,0 +1,66 @@
+
+export const products = [
+  {
+    id: 1,
+    name: "Classic White T-Shirt",
+    price: 25,
+    image: "https://via.placeholder.com/150?text=White+T-Shirt",
+    category: "Clothing",
+  },
+  {
+    id: 2,
+    name: "Denim Jeans",
+    price: 45,
+    image: "https://via.placeholder.com/150?text=Denim+Jeans",
+    category: "Clothing",
+  },
+  {
+    id: 3,
+    name: "Leather Jacket",
+    price: 90,
+    image: "https://via.placeholder.com/150?text=Leather+Jacket",
+    category: "Clothing",
+  },
+  {
+    id: 4,
+    name: "Running Sneakers",
+    price: 70,
+    image: "https://via.placeholder.com/150?text=Sneakers",
+    category: "Footwear",
+  },
+  {
+    id: 5,
+    name: "Casual Hoodie",
+    price: 40,
+    image: "https://via.placeholder.com/150?text=Hoodie",
+    category: "Clothing",
+  },
+  {
+    id: 6,
+    name: "Smart Watch",
+    price: 120,
+    image: "https://via.placeholder.com/150?text=Smart+Watch",
+    category: "Accessories",
+  },
+  {
+    id: 7,
+    name: "Wireless Earbuds",
+    price: 60,
+    image: "https://via.placeholder.com/150?text=Earbuds",
+    category: "Accessories",
+  },
+  {
+    id: 8,
+    name: "Backpack",
+    price: 35,
+    image: "https://via.placeholder.com/150?text=Backpack",
+    category: "Bags",
+  },
+  {
+    id: 9,
+    name: "Sunglasses",
+    price: 30,
+    image: "https://via.placeholder.com/150?text=Sunglasses",
+    category: "Accessories",
+  },
+];
