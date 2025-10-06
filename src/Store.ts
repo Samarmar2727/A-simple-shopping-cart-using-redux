@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // localStorage
 import cartReducer from "../src/features/cart/cartSlice"
+import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 
 const persistConfig = {
   key: "root",
@@ -14,6 +15,13 @@ export const store = configureStore({
   reducer: {
     cart: persistedReducer,
   },
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        // هنا بنستبعد الأكشنز الخاصة بـ redux-persist من التحذير
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 })
 
 
